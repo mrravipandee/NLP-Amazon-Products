@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: ./frontend
+    container_name: frontend_container
+    ports:
+      - "3000:80" # Vite serves on 3000, but Nginx serves on 80
+    depends_on:
+      - backend
+
+  backend:
+    build: ./backend
+    container_name: backend_container
+    ports:
+      - "5000:5000"
